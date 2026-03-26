@@ -1,0 +1,23 @@
+services:
+  server:
+    image: lunarstorm.server
+    build:
+      context: .
+      dockerfile: LunarStorm.Server/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    depends_on:
+      - db
+
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+   
+
+
